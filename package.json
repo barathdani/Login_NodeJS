@@ -1,0 +1,27 @@
+{
+  "name": "Login_NodeJS",
+  "version": "1.0.0",
+  "description": "Create a login platform with NodeJS and MySql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barathdani/Login_NodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/barathdani/Login_NodeJS/issues"
+  },
+  "homepage": "https://github.com/barathdani/Login_NodeJS#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mysql": "^2.18.1"
+  }
+}
