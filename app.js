@@ -1,26 +1,38 @@
 const express = require("express");
+const path = require('path');
 const mysql = require("mysql");
+const dotenv = require('dotenv');
+
+dotenv.config({ path: './.env'});
 
 const app = express();
 
 const db = mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"",
-    database: "nodejs-login"
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    passpassword: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE
 });
 
-db.connect( (error) => {
-    if(error){
+const publicDirectory = path.join(__dirname, './public');
+//console.log(__dirname);
+app.use(express.static(publicDirectory))
+
+app.set('view engine', 'hbs');
+
+db.connect((error) => {
+    if(error) {
         console.log(error)
-} else {
-    console.log("MySql Connected")
-}}),
-
-app.get("/", (req, res) => {
-    res.send("<h1>Home page</h1>")
-});
-app.listen(5000, ()=> {
-    console.log("Server is runnning on port 5000");
+    } else {
+        console.log("MySQL Connected")
+    }
 });
 
+app.get("/", (req,res) => {
+    res.render("index")
+});
+
+
+app.listen(5000, () => {
+    console.log("Server started on port 5000");
+});
